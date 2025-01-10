@@ -1,0 +1,29 @@
+Table Customer {
+  Id integer [pk]
+  Name varchar
+  Address varchar
+}
+
+Table TuberOrder {
+  Id integer [pk]
+  OrderPlacedOnDate datetime
+  CustomerId integer [ref: > Customer.Id]
+  TuberDriverId integer [ref: > TuberDriver.Id, null]
+  DeliveredOnDate datetime
+}
+
+Table Topping {
+  Id integer [pk]
+  Name varchar
+}
+
+Table TuberTopping {
+  Id integer [pk]
+  TuberOrderId integer [ref: > TuberOrder.Id]
+  ToppingId integer [ref: > Topping.Id]
+}
+
+Table TuberDriver {
+  Id integer [pk]
+  Name varchar
+}
